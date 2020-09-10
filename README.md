@@ -1,8 +1,8 @@
-## Work
+## word-wiki
 
 ### Project Description
 
-_Work Wiki_(in WIP) is a web app developed in React using Hooks which is a collection of different words with their definition.
+_word-wiki_(in WIP) is a web app developed in React using Hooks which is a collection of different words with their definition.
 
 ### Installing and Running Project
 
