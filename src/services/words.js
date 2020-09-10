@@ -4,13 +4,13 @@ const baseUrl = 'http://localhost:3001';
 
 const getAll = () => http.get({ url: `${baseUrl}/words` });
 
-const postWord = (word) => http.post({ url: `${baseUrl}/words`, body: word });
+const post = (word) => http.post({ url: `${baseUrl}/words`, body: word });
 
-const updateWord = (id, word) =>
+const update = (id, word) =>
 	http.put({ url: `${baseUrl}/words/${id}`, body: word });
 
 export default {
 	getAll,
-	postWord,
-	updateWord,
+	post,
+	update,
 };

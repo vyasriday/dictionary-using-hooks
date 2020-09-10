@@ -9,6 +9,21 @@
       "name": "dyslexia",
       "definition": "A learning disorder characterised by difficulty reading.",
       "id": "ib6w_Rr"
+    },
+    {
+      "name": "react ",
+      "definition": "A UI library created by Facebook",
+      "id": "gNshTkd"
+    },
+    {
+      "name": "angular",
+      "definition": "A frontend framework developed by Google",
+      "id": "U8lGlfj"
+    },
+    {
+      "name": "localhost",
+      "definition": "a local web sever that is hosted on your computer",
+      "id": "4sZx7Xv"
     }
   ]
 }
