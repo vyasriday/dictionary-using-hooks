@@ -4,6 +4,8 @@ import wordsService from '../services/words';
 import WordList from './WordList';
 import WordForm from './WordForm';
 
+import { checkIfWordExists } from '../helpers';
+
 const App = (props) => {
 	const [words, setWords] = useState([]);
 	const [showForm, setShowForm] = useState(false);
@@ -13,7 +15,11 @@ const App = (props) => {
 	}, []);
 
 	function handleSubmit(word) {
-		wordsService.post(word).then((word) => setWords([...words, word]));
+		if (!checkIfWordExists(words, word.name)) {
+			wordsService.post(word).then((word) => setWords([...words, word]));
+		} else {
+			alert(`${word.name} already exists in the wiki!`);
+		}
 	}
 
 	return (
