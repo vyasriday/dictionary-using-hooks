@@ -9,11 +9,17 @@ import { checkIfWordExists } from '../helpers';
 const App = (props) => {
 	const [words, setWords] = useState([]);
 	const [showForm, setShowForm] = useState(false);
-
+	const [filter, setFilter] = useState('');
+	const [filteredWords, setFilteredWords] = useState(words);
 	useEffect(() => {
-		wordsService.getAll().then((words) => setWords(words));
+		wordsService.getAll().then((words) => {
+			setWords(words);
+		});
 	}, []);
 
+	useEffect(() => {
+		setFilteredWords(words.filter((word) => word.name.startsWith(filter)));
+	}, [filter, words]);
 	function handleSubmit(word) {
 		if (!checkIfWordExists(words, word.name)) {
 			wordsService.post(word).then((word) => setWords([...words, word]));
@@ -26,13 +32,22 @@ const App = (props) => {
 		<div className='main-wrapper'>
 			<h2>Word Wiki</h2>
 			<div>
+				<input
+					type='search'
+					value={filter}
+					onChange={(e) => setFilter(e.target.value)}
+					placeholder='Search for words'
+				/>
+			</div>
+
+			{filter && <WordList words={filteredWords} />}
+			{!filter && <WordList words={words} />}
+			{showForm && <WordForm handleSubmit={handleSubmit} />}
+			<div>
 				<button onClick={() => setShowForm(!showForm)}>
 					{showForm ? 'Close' : 'Add Word'}
 				</button>
 			</div>
-
-			{showForm && <WordForm handleSubmit={handleSubmit} />}
-			<WordList words={words} />
 		</div>
 	);
 };
